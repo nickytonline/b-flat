@@ -7,6 +7,10 @@
     "test": "mocha --reporter progress --compilers js:babel-core/register --recursive ./test/**/*.spec.js",
     "test:watch": "npm run test -- --watch"
   },
+  "keywords": [
+    "flatten",
+    "flatten object"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nickytonline/b-flat.git"
