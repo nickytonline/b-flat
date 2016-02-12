@@ -1,0 +1,27 @@
+{
+  "name": "b-flat",
+  "version": "1.0.0",
+  "description": "A simple object flattener.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter progress --compilers js:babel-core/register --recursive ./src/test/**/*.spec.js",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickytonline/b-flat.git"
+  },
+  "author": "Nick Taylor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickytonline/b-flat/issues"
+  },
+  "homepage": "https://github.com/nickytonline/b-flat#readme",
+  "devDependencies": {
+    "babel-eslint": "4.1.8",
+    "babel-preset-es2015": "6.5.0",
+    "chai": "3.5.0",
+    "eslint": "1.10.3",
+    "mocha": "2.4.5"
+  }
+}
