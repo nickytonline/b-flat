@@ -1,9 +1,11 @@
 {
   "name": "b-flat",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A simple object flattener.",
-  "main": "index.js",
+  "main": "./lib/flatten.js",
   "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm test && npm run compile",
     "test": "mocha --reporter progress --compilers js:babel-core/register --recursive ./test/**/*.spec.js",
     "test:watch": "npm run test -- --watch"
   },

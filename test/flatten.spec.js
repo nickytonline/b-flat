@@ -1,5 +1,5 @@
 import chai from 'chai';
-import flatten from '../src/index';
+import flatten from '../src/flatten';
 
 const assert = chai.assert;
 
