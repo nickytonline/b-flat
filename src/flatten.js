@@ -1,5 +1,9 @@
+function isPrimitive(valueToCheck) {
+    return valueToCheck === null || typeof valueToCheck !== `object`;
+}
+
 function flattenObject(objectToVisit, separator = `_`, flattenedObject = {}, keyBeingBuilt = ``, currentKey = ``) {
-  if (currentKey !== '') {
+  if (currentKey !== ``) {
     keyBeingBuilt = `${keyBeingBuilt}${keyBeingBuilt !== `` ? separator : ``}${currentKey}`;
   }
 
@@ -8,7 +12,7 @@ function flattenObject(objectToVisit, separator = `_`, flattenedObject = {}, key
       if (typeof objectToVisit[key] === `object`) {
         flattenObject(objectToVisit[key], separator, flattenedObject, keyBeingBuilt, key);
       } else {
-        let flattenedKey = keyBeingBuilt !== '' ? `${keyBeingBuilt}${separator}${key}` : key;
+        let flattenedKey = keyBeingBuilt !== `` ? `${keyBeingBuilt}${separator}${key}` : key;
         flattenedObject[flattenedKey] = objectToVisit[key];
       }
     });
@@ -25,6 +29,10 @@ function flattenObject(objectToVisit, separator = `_`, flattenedObject = {}, key
  * @return {object} The flattened object.
  */
 function flatten(objectToFlatten, separator = `_`) {
+  if (isPrimitive(objectToFlatten)) {
+    return objectToFlatten;
+  }
+
   return flattenObject(objectToFlatten, separator);
 }
 
