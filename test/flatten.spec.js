@@ -28,6 +28,46 @@ describe(`WHEN an object only contains primitives`, () => {
   });
 });
 
+describe(`WHEN a value is undefined in an object to be flattened`, () => {
+  it(`SHOULD return the flattened object with the undefined values for the flattened keys`, () => {
+    // arrange
+    const objectToFlatten = { a: undefined, b: { c: undefined, d: { e: undefined } }};
+
+    // act
+    const flattenedObject = flatten(objectToFlatten);
+
+    // assert
+    assert(`a` in flattenedObject);
+    assert(flattenedObject.a === undefined);
+
+    assert(`b_c` in flattenedObject);
+    assert(flattenedObject.b_c === undefined);
+
+    assert(`b_d_e` in flattenedObject);
+    assert(flattenedObject.b_d_e === undefined);
+  });
+});
+
+describe(`WHEN a value is null in an object to be flattened`, () => {
+  it(`SHOULD return the flattened object with the null values for the flattened keys`, () => {
+    // arrange
+    const objectToFlatten = { a: null, b: { c: null, d: { e: null } }};
+
+    // act
+    const flattenedObject = flatten(objectToFlatten);
+
+    // assert
+    assert(`a` in flattenedObject);
+    assert(flattenedObject.a === null);
+
+    assert(`b_c` in flattenedObject);
+    assert(flattenedObject.b_c === null);
+
+    assert(`b_d_e` in flattenedObject);
+    assert(flattenedObject.b_d_e === null);
+  });
+});
+
 describe(`WHEN an object contains nested object`, () => {
   it(`SHOULD flatten`, () => {
     // arrange
@@ -46,6 +86,21 @@ describe(`WHEN an object contains nested object`, () => {
     flattened.b_c.should.equal(2);
   });
 });
+
+describe(`WHEN flattening an array`, () => {
+  it(`SHOULD return an object whose keys are array indices`, () => {
+    // arrange
+    const objectToFlatten = [1, 2, 3];
+
+    // act
+    const flattened = flatten(objectToFlatten);
+
+    // assert
+    objectToFlatten.forEach((value, index) => {
+      flattened[`${index}`].should.equal(value);
+    })
+  });
+})
 
 describe(`WHEN an object contains an array as a value for a top-level key`, () => {
   it(`SHOULD flatten the keys using the array indices`, () => {
