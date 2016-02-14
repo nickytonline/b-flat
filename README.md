@@ -3,28 +3,25 @@
 [![build status](https://travis-ci.org/nickytonline/b-flat.svg?branch=master)](https://travis-ci.org/nickytonline/b-flat)
 [![npm version](https://img.shields.io/npm/v/b-flat.svg?style=flat-square)](https://www.npmjs.com/package/b-flat)
 
-A simple object flattener. Objects that are n levels deep get their keys concatenated using a separator (default separator is "_") and all key/value pairs end up at the top level of the object.
+A simple object flattener.
 
-e.g.
+Installation
+------------
+`npm install b-flat`
 
+Usage
+-----
+
+Via ES6 import from module
 ```
-{
-  a: 1
-  b: {
-    c: 2,
-    d: {
-      e: 3
-    }    
-  }
-}
+const flatten from 'b-flat';
+
+flatten({ a: 1, b: { c: `Hello` } }); // { a: 1, b_c: "Hello" }
 ```
 
-becomes
-
+Via require
 ```
-{
-  a: 1,
-  b_c: 2,
-  b_d_e: 3
-}
+const flatten = require('b-flat').default;
+
+flatten({ a: 1, b: { c: `Hello` } });
 ```
