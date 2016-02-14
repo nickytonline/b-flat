@@ -176,3 +176,116 @@ describe(`WHEN a key flattening concatenation separator is specified`, () => {
     assert(keyHasProperSeparator);
   });
 });
+
+describe(`WHEN a boolean is flattened`, () => {
+  it(`SHOULD return the same boolean value`, () => {
+    // arrange
+    const primitiveValuesToFlatten = [
+      true,
+      false
+    ];
+
+    // act
+    const flattenedPrimitives = primitiveValuesToFlatten.map(value => flatten(value));
+
+    // assert
+    // assert is used instead of should.equal because of null and undefined.
+    primitiveValuesToFlatten.forEach((expected, index) => {
+      let actual = flattenedPrimitives[index];
+
+      assert(expected === actual);
+    });
+  });
+});
+
+describe(`WHEN a string is flattened`, () => {
+  it(`SHOULD return the same string value`, () => {
+    // arrange
+    const primitiveValuesToFlatten = [
+      ``,
+      `some string`,
+      `🏻 🙇🏻 🙌🏻 🙏🏻 🚶🏻 🏃🏻 💃🏻 💪🏻 👈🏻 👉🏻 ☝️🏻 👆🏻 🖕🏻 👇🏻 ✌️🏻 🖖🏻 🤘🏻 🖐🏻 ✊🏻 ✋🏻 👊🏻 👌🏻 👍🏻 👎🏻 👋🏻 👏🏻 👐🏻 ✍🏻 💅🏻 👂🏻 👃🏻 🚣🏻 🛀🏻 🏄🏻 🏇🏻 🏊🏻 ⛹🏻 🏋🏻 🚴🏻 🚵🏻`,
+      `\n\r\f\t`
+    ];
+
+    // act
+    const flattenedPrimitives = primitiveValuesToFlatten.map(value => flatten(value));
+
+    // assert
+    // assert is used instead of should.equal because of null and undefined.
+    primitiveValuesToFlatten.forEach((expected, index) => {
+      let actual = flattenedPrimitives[index];
+
+      assert(expected === actual);
+    });
+  });
+});
+
+describe(`WHEN a number is flattened`, () => {
+  it(`SHOULD return the same number`, () => {
+    // arrange
+    const primitiveValuesToFlatten = [
+      0,
+      1,
+      -1,
+      1.4444,
+      44.0,
+      12.,
+      -1.4444,
+      -44.0
+      -12.,
+      1.8618464013789647e+187,
+      -1.8618464013789647e+187
+    ];
+
+    // act
+    const flattenedPrimitives = primitiveValuesToFlatten.map(value => flatten(value));
+
+    // assert
+    // assert is used instead of should.equal because of null and undefined.
+    primitiveValuesToFlatten.forEach((expected, index) => {
+      let actual = flattenedPrimitives[index];
+
+      assert(expected === actual);
+    });
+  });
+});
+
+describe(`WHEN a NaN is flattened`, () => {
+  it(`SHOULD return NaN`, () => {
+    // arrange
+    const nanBeforeFlatten = NaN;
+
+    // act
+    const flattenedNan = flatten(nanBeforeFlatten);
+
+    // assert
+    assert(Number.isNaN(flattenedNan));
+  });
+});
+
+describe(`WHEN null is flattened`, () => {
+  it(`SHOULD return null`, () => {
+    // arrange
+    const objectToFlatten = null;
+
+    // act
+    const flattenedObject = flatten(objectToFlatten);
+
+    // assert
+    assert(objectToFlatten === flattenedObject);
+  });
+});
+
+describe(`WHEN undefined is flattened`, () => {
+  it(`SHOULD return undefined`, () => {
+    // arrange
+    const objectToFlatten = undefined;
+
+    // act
+    const flattenedObject = flatten(objectToFlatten);
+
+    // assert
+    assert(flattenedObject === objectToFlatten);
+  });
+});
