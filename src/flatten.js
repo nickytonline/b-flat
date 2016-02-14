@@ -9,7 +9,7 @@ function flattenObject(objectToVisit, separator = `_`, flattenedObject = {}, key
 
   Object.keys(objectToVisit)
     .forEach(key => {
-      if (typeof objectToVisit[key] === `object`) {
+      if (!isPrimitive(objectToVisit[key])) {
         flattenObject(objectToVisit[key], separator, flattenedObject, keyBeingBuilt, key);
       } else {
         let flattenedKey = keyBeingBuilt !== `` ? `${keyBeingBuilt}${separator}${key}` : key;
