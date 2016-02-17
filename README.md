@@ -14,14 +14,19 @@ Usage
 
 Via ES6 import from module
 ```
-const flatten from 'b-flat';
+const { flatten, unflatten } from 'b-flat';
 
-flatten({ a: 1, b: { c: `Hello` } }); // { a: 1, b_c: "Hello" }
+const flattenedObject = flatten({a: [1,2,3]});
+console.log(flattenedObject);
+console.log(unflatten(flattenedObject));
 ```
 
 Via require
 ```
-const flatten = require('b-flat').default;
+const flatten = require('b-flat').flatten;
+const unflatten = require('b-flat').unflatten;
 
-flatten({ a: 1, b: { c: `Hello` } });
+const flattenedObject = flatten({a: [1,2,3]});
+console.log(flattenedObject);
+console.log(unflatten(flattenedObject));
 ```

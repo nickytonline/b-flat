@@ -1,17 +1,18 @@
 {
   "name": "b-flat",
-  "version": "2.0.3",
-  "description": "A simple object flattener.",
-  "main": "./lib/flatten.js",
+  "version": "2.0.4",
+  "description": "A simple object flattener/unflattener.",
+  "main": "./lib/index.js",
   "scripts": {
     "compile": "babel -d lib/ src/",
-    "prepublish": "npm test && npm run compile",
-    "test": "mocha --reporter progress --compilers js:babel-core/register --recursive ./test/**/*.spec.js",
+    "prepublish": "npm test && rimraf ./lib && npm run compile",
+    "test": "mocha --compilers js:babel-core/register --recursive ./test/**/*.spec.js",
     "test:watch": "npm run test -- --watch"
   },
   "keywords": [
     "flatten",
-    "flatten object"
+    "unflatten",
+    "serialization"
   ],
   "repository": {
     "type": "git",
@@ -30,6 +31,10 @@
     "babel-preset-es2015": "6.5.0",
     "chai": "3.5.0",
     "eslint": "1.10.3",
-    "mocha": "2.4.5"
+    "mocha": "2.4.5",
+    "rimraf": "2.5.2"
+  },
+  "dependencies": {
+    "babel-plugin-transform-object-assign": "6.5.0"
   }
 }
