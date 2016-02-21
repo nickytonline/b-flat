@@ -3,7 +3,7 @@
 [![build status](https://travis-ci.org/nickytonline/b-flat.svg?branch=master)](https://travis-ci.org/nickytonline/b-flat)
 [![npm version](https://img.shields.io/npm/v/b-flat.svg?style=flat-square)](https://www.npmjs.com/package/b-flat)
 
-A simple object flattener.
+A simple object flattener/unflattener. 
 
 Installation
 ------------
