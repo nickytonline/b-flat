@@ -1,6 +1,6 @@
 {
   "name": "b-flat",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A simple object flattener/unflattener.",
   "main": "./lib/index.js",
   "scripts": {
