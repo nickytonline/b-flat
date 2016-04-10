@@ -31,7 +31,7 @@ function unflattenKey(keyParts, unflattenedObject, value) {
  */
 function unflatten(objectToUnflatten, separator = `_`) {
   const unflattenedObject = {};
-  const unflattenedCopy = Object.assign({}, unflattenedObject);
+  const unflattenedCopy = { ...unflattenedObject };
 
   Object.keys(objectToUnflatten).forEach(function (key) {
     const keyParts = key.split(separator);
